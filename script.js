@@ -1,9 +1,24 @@
+// 1. تهيئة الـ Firebase باستخدام قاعدة البيانات الموحدة
+const firebaseConfig = {
+    databaseURL: "https://wedding-apps-cc913-default-rtdb.firebaseio.com/"
+};
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+
+// 2. مسار التخزين الخاص بـ يوسف ونعمة
+const wishesRef = database.ref('wishes/youssef_neama');
+
 const audio = document.getElementById('bg-music');
 let isPlaying = false;
 
 document.addEventListener('DOMContentLoaded', () => {
     buildCalendar();
-    loadWishes();
+    
+    // 3. الاستماع واسترجاع التهاني لحظياً من الفايربيس
+    wishesRef.on('child_added', (snapshot) => {
+        const wish = snapshot.val();
+        renderWish(wish, true);
+    });
 });
 
 function openInvitation() {
@@ -90,6 +105,7 @@ function buildCalendar() {
     }
 }
 
+// 4. إرسال وحفظ التهنئة أونلاين على الفايربيس
 function addWish() {
     const nameInput = document.getElementById('guestName');
     const msgInput = document.getElementById('guestMessage');
@@ -97,16 +113,20 @@ function addWish() {
     const msg = msgInput.value.trim();
     
     if (name && msg) {
-        const wish = { name, msg };
-        saveWishToStorage(wish);
-        renderWish(wish, true);
+        const newWish = {
+            name: name,
+            msg: msg,
+            timestamp: Date.now()
+        };
+        
+        wishesRef.push(newWish);
 
         nameInput.value = '';
         msgInput.value = '';
     }
 }
 
-function renderWish(wish, prepend = false) {
+function renderWish(wish, prepend = true) {
     const wishesList = document.getElementById('wishesList');
     const item = document.createElement('div');
     item.className = 'wish-item';
@@ -117,15 +137,4 @@ function renderWish(wish, prepend = false) {
     } else {
         wishesList.appendChild(item);
     }
-}
-
-function saveWishToStorage(wish) {
-    let wishes = JSON.parse(localStorage.getItem('youssef_neama_wishes')) || [];
-    wishes.unshift(wish);
-    localStorage.setItem('youssef_neama_wishes', JSON.stringify(wishes));
-}
-
-function loadWishes() {
-    let wishes = JSON.parse(localStorage.getItem('youssef_neama_wishes')) || [];
-    wishes.forEach(wish => renderWish(wish));
 }
