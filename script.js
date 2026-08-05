@@ -74,11 +74,13 @@ function buildCalendar() {
         grid.appendChild(div);
     });
 
-    for(let i = 0; i < 2; i++) {
+    // سبتمبر 2026 يبدأ من يوم الثلاثاء (خانة واحدة فارغة ليوم الاثنين)
+    for(let i = 0; i < 1; i++) {
         const empty = document.createElement('div');
         grid.appendChild(empty);
     }
 
+    // أيام شهر سبتمبر
     for(let d = 1; d <= 30; d++) {
         const div = document.createElement('div');
         div.className = 'cal-day';
