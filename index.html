@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>دعوة زفاف يُوسُف & نِعْمَة</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Aref+Ruqaa:wght@400;700&family=Cinzel:wght@600;700;900&family=Reem+Kufi:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <audio id="bg-music" loop preload="auto">
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+
+    <button class="audio-btn" onclick="toggleAudio()" id="audio-toggle">🎵</button>
+
+    <div class="hero-gate" id="heroGate">
+        <div class="hero-card">
+            <div class="card-ornament top">✧ ✦ ✧</div>
+            <div class="heart-badge">💍</div>
+            <h1 class="hero-title">YOUSSEF & NEAMA</h1>
+            <p class="hero-arabic-names">يُوسُف & نِعْمَة</p>
+            <div class="gold-divider">✨ ✨ ✨</div>
+            <p class="hero-date">September 3, 2026</p>
+            <p class="hero-sub">يتشرفان بدعوتكم لحضور حفل الزفاف</p>
+            <button class="open-btn" onclick="openInvitation()">فتح الدعوة ✉️</button>
+            <div class="card-ornament bottom">✧ ✦ ✧</div>
+        </div>
+    </div>
+
+    <div class="mobile-container">
+        
+        <div class="header-frame">
+            <div class="royal-border">
+                <div class="frame-decor corner-tl">✦</div>
+                <div class="frame-decor corner-tr">✦</div>
+                <div class="frame-decor corner-bl">✦</div>
+                <div class="frame-decor corner-br">✦</div>
+                <div class="floral-header-top">🌸 🕊️ 🌸</div>
+                <h1 id="main-names" class="arabic-names">يُوسُف<br><span class="and-symbol">&</span><br>نِعْمَة</h1>
+                <div class="floral-header-bottom">✧ ✦ ✧</div>
+            </div>
+        </div>
+
+        <div class="quran-box">
+            <p class="bismillah">﷽</p>
+            <p class="quran-verse">« وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً »</p>
+        </div>
+
+        <div class="poem-box">
+            <p class="poem-line">"وَتَمَّتْ بِحَمْدِ اللَّهِ آيَاتُ فَرْحِنَا .. وَأَشْرَقَ فِى لَيْلِ التَّلاقِى بَدْرُنَا"</p>
+            <div class="poem-divider">✧ ✨ ✧</div>
+            <p class="poem-line sub-poem">"فَرْحَة أخيرًا بتجمعنا .. وَصَبَرْنَا لَهُ مَعْنَى"</p>
+        </div>
+
+        <div class="section-title">WEDDING CEREMONY INFO</div>
+        <p class="sub-announce">نَتَشَرَّفُ بِدَعْوَتِكُمْ لِمُشَارَكَتِنَا فَرْحَتَنَا</p>
+
+        <div class="couple-names-box">
+            <div class="person-card">
+                <h2 id="groom-name">يُوسُف</h2>
+                <span class="role">GROOM / العريس</span>
+            </div>
+            <div class="amp">&</div>
+            <div class="person-card">
+                <h2 id="bride-name">نِعْمَة</h2>
+                <span class="role">BRIDE / العروس</span>
+            </div>
+        </div>
+
+        <div class="section-title">PHOTO GALLERY</div>
+        <div class="photo-gallery-box">
+            <div class="photo-card">
+                <img src="couple.jpg" alt="صورة العروسين">
+            </div>
+        </div>
+
+        <div class="section-title">RECEPTION INFO</div>
+        <p class="sub-announce">THE RECEPTION WILL TAKE PLACE AT:</p>
+        
+        <div class="event-time" id="event-time">20:00 (08:00 PM)</div>
+        <div class="event-date-row">
+            <span>THURSDAY (الخميس)</span>
+            <span class="divider">|</span>
+            <span>03</span>
+            <span class="divider">|</span>
+            <span>SEPTEMBER</span>
+        </div>
+        <div class="event-year">2026</div>
+
+        <div class="section-title">COUNTDOWN</div>
+        <div class="countdown">
+            <div class="count-item"><span class="count-num" id="days">00</span><span class="count-lbl">Days</span></div>
+            <div class="count-item"><span class="count-num" id="hours">00</span><span class="count-lbl">Hours</span></div>
+            <div class="count-item"><span class="count-num" id="minutes">00</span><span class="count-lbl">Mins</span></div>
+            <div class="count-item"><span class="count-num" id="seconds">00</span><span class="count-lbl">Secs</span></div>
+        </div>
+
+        <div class="calendar-box">
+            <h3>September 2026</h3>
+            <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+
+        <div class="section-title">WEDDING VENUE</div>
+        <div class="venue-box">
+            <p class="venue-title">✨ قاعة الجوهرة ✨</p>
+            <p class="venue-sub">🏛️ دار المشاة - صلاح سالم، القاهرة</p>
+            <a href="https://maps.app.goo.gl/v9okLQrDvhhQw27f6?g_st=iw" target="_blank" class="map-btn">📍 Open in Google Maps</a>
+        </div>
+
+        <div class="section-title">GUESTBOOK</div>
+        <div class="guestbook">
+            <input type="text" id="guestName" placeholder="أدخل اسمك الكريم / Enter your name*">
+            <textarea id="guestMessage" rows="3" placeholder="اكتب مباركتك للعروسين / Enter your wishes...*"></textarea>
+            <button onclick="addWish()">إرسال التهنئة 💌</button>
+            <div class="wishes-list" id="wishesList"></div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
